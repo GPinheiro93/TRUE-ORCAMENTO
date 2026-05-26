@@ -1059,7 +1059,7 @@
 
   /* ─── PRINT / PDF ─── */
   @media print {
-    @page { size: A4; margin: 0; }
+    @page { size: A4; margin: 12mm 14mm; }
 
     * { animation: none !important; transition: none !important; }
 
@@ -1076,132 +1076,170 @@
     .page {
       max-width: 100%;
       margin: 0;
-      padding: 28px 52px 36px;
+      padding: 0;
       background: #0D0D0D;
     }
 
+    /* ── Não cortar estes elementos ── */
     .service-card,
-    .monthly-card,
-    .monthly-grid,
-    .monthly-total,
-    .totals-wrap,
-    .payment-timeline,
+    .total-row,
     .prazo-entrega,
-    .metodologia-steps,
-    .proximos-passos,
-    .summary-box,
+    .proximos-item,
     .signature-section,
     footer {
       break-inside: avoid !important;
       page-break-inside: avoid !important;
     }
 
+    /* ── Quebras de página ── */
     .pdf-break {
       break-before: page !important;
       page-break-before: always !important;
-      padding-top: 28px !important;
+      padding-top: 16px !important;
     }
 
-    header { padding: 12px 0; }
-    .brand-name { font-size: 17px; }
+    /* ── HEADER ── */
+    header { padding: 10px 0 8px; }
+    .brand-name { font-size: 15px; }
     .brand-dot { width: 6px; height: 6px; }
-    .proposal-badge { font-size: 9px; padding: 3px 10px; }
+    .proposal-badge { font-size: 9px; padding: 3px 8px; }
     .proposal-date { font-size: 10px; }
 
-    .hero { padding: 16px 0 12px; }
-    .hero svg { width: 54px !important; height: 54px !important; margin-bottom: 10px !important; }
-    .agency-hero-logo { font-size: 40px; letter-spacing: -2px; gap: 12px; margin-bottom: 6px; }
-    .brand-dot-hero { width: 11px; height: 11px; }
-    .hero-tagline { font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; }
-    .hero-for { margin-bottom: 8px; }
+    /* ── HERO ── */
+    .hero { padding: 10px 0 8px; }
+    .hero svg { display: none !important; }
+    .hero-tagline { font-size: 10px; letter-spacing: 3px; margin-bottom: 6px; }
+    .hero-for { margin-bottom: 5px; }
     .hero-for-text { font-size: 9px; }
-    .client-hero-ref { font-size: 17px; }
+    .client-hero-ref { font-size: 18px; }
 
-    .intro { padding: 12px 0 0; }
-    .intro p { font-size: 12px; line-height: 1.55; }
+    /* ── INTRO ── */
+    .intro { padding: 8px 0 0; }
+    .intro p { font-size: 11px; line-height: 1.5; }
 
-    .section-divider { margin: 12px 0 8px !important; }
+    /* ── SECTION DIVIDER ── */
+    .section-divider { margin: 10px 0 6px !important; }
     .section-divider-label { font-size: 9px; padding: 3px 10px; }
 
-    .service-includes { display: none !important; }
+    /* ── SERVICE CARDS — sobrescreve o grid para flex ── */
     .services-grid { gap: 1px; }
-    .service-card { padding: 12px 20px; }
-    .service-card:first-child { border-radius: 7px 7px 0 0; }
-    .service-card:last-child  { border-radius: 0 0 7px 7px; }
-    .service-tag { font-size: 8px; padding: 1px 7px; margin-bottom: 4px; }
-    .service-name { font-size: 15px; margin-bottom: 3px; }
-    .service-desc { font-size: 12px; line-height: 1.45; margin-bottom: 0; }
-    .service-price-col { padding-top: 10px; gap: 2px; }
-    .service-price { font-size: 20px; }
-    .service-price-note { font-size: 10px; }
 
+    .service-card {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+      padding: 9px 14px !important;
+      gap: 10px !important;
+    }
+
+    .service-card > div:first-child { flex: 1 1 auto; min-width: 0; }
+
+    .service-card:first-child { border-radius: 6px 6px 0 0 !important; }
+    .service-card:last-child  { border-radius: 0 0 6px 6px !important; }
+
+    .service-tag { font-size: 8px; padding: 1px 6px; margin-bottom: 3px; }
+    .service-name { font-size: 13px; margin-bottom: 2px; }
+    .service-desc { font-size: 11px; line-height: 1.4; margin-bottom: 0; }
+    .service-includes { display: none !important; }
+
+    .service-price-col {
+      flex-shrink: 0;
+      padding-top: 6px !important;
+      gap: 1px !important;
+      align-items: flex-end;
+    }
+    .service-price { font-size: 17px !important; }
+    .service-price-note { font-size: 9px !important; }
+
+    /* ── TOTALS ── */
     .totals-wrap { margin-top: 1px; }
-    .total-row { padding: 11px 20px; margin-top: 1px; }
-    .total-label { font-size: 11px; letter-spacing: 1.5px; }
-    .total-value { font-size: 14px; }
-    .total-row.highlight .total-value { font-size: 23px; }
+    .total-row { padding: 9px 14px; margin-top: 1px; }
+    .total-label { font-size: 10px; letter-spacing: 1.5px; }
+    .total-value { font-size: 12px; }
+    .total-row.highlight .total-value { font-size: 19px; }
 
-    .payment-timeline { margin-top: 24px; }
-    .timeline-dot { width: 38px; height: 38px; font-size: 13px; margin-bottom: 20px; }
-    .timeline-connector { top: calc(8px + 19px); }
-    .timeline-node { padding: 0 16px 18px; }
-    .timeline-pct { font-size: 44px; margin-bottom: 8px; }
-    .timeline-pct span { font-size: 21px; }
-    .timeline-title { font-size: 14px; margin-bottom: 7px; font-weight: 600; }
-    .timeline-desc { font-size: 12px; line-height: 1.6; margin-bottom: 12px; }
-    .timeline-when { font-size: 10px; padding: 4px 10px; letter-spacing: 1.5px; }
+    /* ── TIMELINE ── */
+    .payment-timeline { margin-top: 14px; }
+    .timeline-dot { width: 32px; height: 32px; font-size: 11px; margin-bottom: 14px; }
+    .timeline-connector { top: calc(8px + 16px); }
+    .timeline-node { padding: 0 10px 14px; }
+    .timeline-pct { font-size: 36px; margin-bottom: 5px; }
+    .timeline-pct span { font-size: 17px; }
+    .timeline-title { font-size: 12px; margin-bottom: 5px; }
+    .timeline-desc { font-size: 11px; line-height: 1.45; margin-bottom: 8px; }
+    .timeline-when { font-size: 9px; padding: 3px 8px; }
 
-    .prazo-entrega { margin-top: 28px; padding: 20px 26px; gap: 18px; }
-    .prazo-icon { font-size: 26px; }
-    .prazo-label { font-size: 10px; letter-spacing: 2.5px; margin-bottom: 6px; }
-    .prazo-text { font-size: 16px; }
+    /* ── PRAZO ── */
+    .prazo-entrega { margin-top: 16px; padding: 12px 18px; gap: 14px; }
+    .prazo-icon { font-size: 20px; }
+    .prazo-label { font-size: 9px; letter-spacing: 2px; margin-bottom: 3px; }
+    .prazo-text { font-size: 12px; }
 
-    .monthly-grid { gap: 2px; }
-    .monthly-card { padding: 20px 24px; }
-    .monthly-card-tag { font-size: 9px; margin-bottom: 7px; }
-    .monthly-card-name { font-size: 16px; margin-bottom: 4px; }
-    .monthly-card-note { font-size: 12px; margin-bottom: 12px; }
-    .monthly-card-price { font-size: 32px; }
-    .monthly-card-price sup { font-size: 15px; }
-    .monthly-card-price sub { font-size: 12px; }
-    .monthly-total { padding: 16px 24px; }
-    .monthly-total-label { font-size: 11px; }
-    .monthly-total-value { font-size: 26px; }
-
-    .maintenance-note { padding: 13px 18px; font-size: 13px; gap: 11px; }
-    .maintenance-note-icon { font-size: 11px; }
-
-    .summary-box { margin-top: 14px; padding: 20px 24px; gap: 22px; }
-    .summary-col h4 { font-size: 10px; margin-bottom: 11px; }
-    .summary-item { padding: 8px 0; font-size: 13px; }
-    .summary-item-value { font-size: 12px; }
-
-    .signature-section { margin-top: 24px; gap: 36px; }
-    .signature-block > div { height: 36px !important; }
-    .signature-label { font-size: 10px; }
-    .signature-name { font-size: 13px; }
-    .signature-role { font-size: 11px; }
-
-    footer { margin-top: 18px; padding: 14px 0 8px; }
-    .footer-brand { font-size: 15px; margin-bottom: 9px; }
-    .footer-contact-item { font-size: 12px; }
-    .footer-contact-item .label { font-size: 10px; min-width: 56px; }
-    .footer-doc-num { font-size: 10px; }
-    .footer-copy { font-size: 11px; }
-
+    /* ── METODOLOGIA ── */
     .metodologia-steps { gap: 1px; }
-    .metodologia-step { padding: 12px 10px; }
+    .metodologia-step { padding: 10px 8px; }
     .metodologia-step:hover { background: #1A1A1A; }
-    .metodologia-num { font-size: 9px; margin-bottom: 6px; }
-    .metodologia-icon { font-size: 16px; margin-bottom: 6px; }
-    .metodologia-title { font-size: 11px; margin-bottom: 4px; }
-    .metodologia-desc { font-size: 10px; line-height: 1.45; }
+    .metodologia-num { font-size: 8px; margin-bottom: 5px; }
+    .metodologia-icon { font-size: 14px; margin-bottom: 4px; }
+    .metodologia-title { font-size: 10px; margin-bottom: 3px; }
+    .metodologia-desc { font-size: 9px; line-height: 1.4; }
 
-    .proximos-passos { padding: 14px 20px; }
-    .proximos-item { padding: 9px 0; gap: 12px; }
-    .proximos-num { width: 24px; height: 24px; font-size: 9px; }
-    .proximos-title { font-size: 12px; margin-bottom: 2px; }
-    .proximos-desc { font-size: 10px; line-height: 1.45; }
+    /* ── PRÓXIMOS PASSOS ── */
+    .proximos-passos { padding: 10px 16px; }
+    .proximos-item { padding: 7px 0; gap: 10px; }
+    .proximos-num { width: 22px; height: 22px; font-size: 9px; }
+    .proximos-title { font-size: 11px; margin-bottom: 2px; }
+    .proximos-desc { font-size: 9px; line-height: 1.4; }
+
+    /* ── MONTHLY ── */
+    .monthly-grid { gap: 1px; }
+    .monthly-card { padding: 14px 16px; }
+    .monthly-card-tag { font-size: 8px; margin-bottom: 5px; }
+    .monthly-card-name { font-size: 14px; margin-bottom: 3px; }
+    .monthly-card-note { font-size: 11px; margin-bottom: 10px; }
+    .monthly-card-price { font-size: 26px; }
+    .monthly-card-price sup { font-size: 12px; }
+    .monthly-card-price sub { font-size: 10px; }
+    .monthly-total { padding: 12px 16px; }
+    .monthly-total-label { font-size: 10px; }
+    .monthly-total-value { font-size: 21px; }
+
+    /* ── MAINTENANCE NOTE ── */
+    .maintenance-note { padding: 10px 14px; font-size: 11px; gap: 8px; }
+    .maintenance-note-icon { font-size: 10px; }
+    /* Oculta a tabela de inclusos/extras no PDF — conteúdo já está no contrato */
+    .maintenance-note ~ div { display: none !important; }
+
+    /* ── SUMMARY — coluna única ── */
+    .summary-box {
+      margin-top: 10px;
+      padding: 14px 18px;
+      grid-template-columns: 1fr !important;
+      gap: 0;
+    }
+    .summary-col:first-child {
+      border-bottom: 1px solid #252525;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .summary-col h4 { font-size: 9px; margin-bottom: 8px; }
+    .summary-item { padding: 5px 0; font-size: 11px; }
+    .summary-item-value { font-size: 11px; }
+
+    /* ── ASSINATURA ── */
+    .signature-section { margin-top: 18px; gap: 32px; }
+    .signature-block > div { height: 30px !important; }
+    .signature-label { font-size: 9px; }
+    .signature-name { font-size: 12px; }
+    .signature-role { font-size: 10px; }
+
+    /* ── FOOTER ── */
+    footer { margin-top: 12px; padding: 10px 0 4px; }
+    .footer-brand { font-size: 13px; margin-bottom: 7px; }
+    .footer-contact-item { font-size: 10px; }
+    .footer-contact-item .label { font-size: 9px; min-width: 48px; }
+    .footer-doc-num { font-size: 9px; }
+    .footer-copy { font-size: 9px; }
 
     .service-card:hover { background: #1A1A1A; }
     .monthly-card:hover { background: #1A1A1A; }
