@@ -1208,8 +1208,8 @@
     /* ── MAINTENANCE NOTE ── */
     .maintenance-note { padding: 10px 14px; font-size: 11px; gap: 8px; }
     .maintenance-note-icon { font-size: 10px; }
-    /* Oculta a tabela de inclusos/extras no PDF — conteúdo já está no contrato */
-    .maintenance-note ~ div { display: none !important; }
+    /* Oculta apenas a tabela de inclusos/extras imediatamente após a nota */
+    .maintenance-note + div { display: none !important; }
 
     /* ── SUMMARY — coluna única ── */
     .summary-box {
