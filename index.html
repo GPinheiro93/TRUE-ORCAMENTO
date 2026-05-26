@@ -1247,16 +1247,73 @@
   }
 
   @media (max-width: 640px) {
-    .service-card { grid-template-columns: 1fr; }
-    .service-price-col { align-items: flex-start; padding-top: 0; }
+    /* ── Página ── */
+    .page { padding: 0 16px 80px; }
+
+    /* ── Header ── */
+    header { flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0 16px; }
+    .header-right { align-items: flex-start; }
+
+    /* ── Hero ── */
+    .hero { padding: 36px 0 28px; }
+    .hero svg { width: 72px !important; height: 72px !important; margin-bottom: 14px !important; }
+    .client-hero-ref { font-size: 18px; }
+
+    /* ── Intro ── */
+    .intro p { font-size: 15px; }
+
+    /* ── Service cards ── */
+    .service-card { grid-template-columns: 1fr; gap: 12px; }
+    .service-price-col { align-items: flex-start; padding-top: 0; flex-direction: row; align-items: center; gap: 6px; }
+    .service-price { font-size: 22px; }
+
+    /* ── Totals ── */
+    .total-row { padding: 14px 20px; }
+    .total-row.highlight .total-value { font-size: 26px; }
+
+    /* ── Timeline — empilha verticalmente ── */
+    .timeline-track { grid-template-columns: 1fr; gap: 0; }
+    .timeline-connector { display: none; }
+    .timeline-node { flex-direction: row; align-items: flex-start; padding: 0 0 20px 0; gap: 16px; }
+    .timeline-dot { margin-bottom: 0; flex-shrink: 0; }
+    .timeline-content { text-align: left; }
+    .timeline-pct { font-size: 32px; }
+    .timeline-pct span { font-size: 16px; }
+
+    /* ── Prazo ── */
+    .prazo-entrega { flex-direction: column; gap: 12px; padding: 20px 20px; }
+
+    /* ── Metodologia — 2x2 ── */
+    .metodologia-steps { grid-template-columns: 1fr 1fr; }
+    .metodologia-step:first-child { border-radius: 8px 0 0 0; }
+    .metodologia-step:nth-child(2) { border-radius: 0 8px 0 0; }
+    .metodologia-step:nth-child(3) { border-radius: 0 0 0 8px; }
+    .metodologia-step:last-child { border-radius: 0 0 8px 0; }
+
+    /* ── Monthly ── */
     .monthly-grid { grid-template-columns: 1fr; }
     .monthly-card:first-child { border-radius: 8px 8px 0 0; }
     .monthly-card:last-child { border-radius: 0; }
-    .monthly-total { border-radius: 0 0 8px 8px; }
-    .summary-box { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr; }
+    .monthly-total { border-radius: 0 0 8px 8px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .monthly-total-value { font-size: 22px; }
+
+    /* ── Detalhe manutenção (incluso/extra) ── */
+    .maintenance-detail { grid-template-columns: 1fr !important; }
+
+    /* ── Summary ── */
+    .summary-box { grid-template-columns: 1fr; gap: 24px; }
+
+    /* ── Assinatura ── */
+    .signature-section { grid-template-columns: 1fr; gap: 28px; }
+
+    /* ── Footer ── */
+    footer { grid-template-columns: 1fr; gap: 24px; }
     .footer-right { align-items: flex-start; }
-    .client-name { font-size: 26px; }
+    .footer-copy { text-align: left; max-width: 100%; }
+
+    /* ── Botão PDF ── */
+    .pdf-fab { bottom: 20px; right: 16px; padding: 12px 18px; font-size: 13px; gap: 8px; }
+    .pdf-fab svg { width: 16px; height: 16px; }
   }
 </style>
 </head>
@@ -1631,7 +1688,7 @@
     </div>
   </div>
 
-  <div style="margin-top: 2px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 8px 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+  <div class="maintenance-detail" style="margin-top: 2px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 8px 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
     <div>
       <div style="font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 10px;">✓ &nbsp;Incluso na manutenção</div>
       <ul style="list-style: none; display: flex; flex-direction: column; gap: 7px;">
