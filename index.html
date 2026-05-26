@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial — True Empreendimentos | GPinheiro Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --surface: #1A1A1A;
+    --surface-2: #212121;
+    --border: #252525;
+    --border-light: #333333;
+    --muted: #555555;
+    --muted-2: #888888;
+    --text: #F0F0F0;
+    --text-secondary: #AAAAAA;
+    --red: #CC1111;
+    --red-dim: rgba(204,17,17,0.12);
+    --red-glow: rgba(204,17,17,0.25);
+    --blue-true: #3A8FD4;
+    --navy-true: #1A3A6B;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NOISE TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0 28px;
+    border-bottom: 1px solid var(--border);
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .brand-name {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-dot {
+    width: 8px; height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 12px var(--red-glow);
+  }
+
+  .brand-accent { color: var(--red); }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .proposal-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--red);
+    background: var(--red-dim);
+    border: 1px solid rgba(204,17,17,0.3);
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .proposal-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted-2);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 64px 0 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    animation: fadeUp 0.7s 0.1s ease both;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse at center top, rgba(204,17,17,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .agency-hero-logo {
+    font-size: 58px;
+    font-weight: 700;
+    letter-spacing: -2.5px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  .brand-dot-hero {
+    width: 14px; height: 14px;
+    background: var(--red);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 24px var(--red-glow);
+  }
+
+  .hero-tagline {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .hero-for {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 20px;
+  }
+
+  .hero-for-line { flex: 1; height: 1px; background: var(--border-light); }
+
+  .hero-for-text {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .client-hero-ref {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: -0.5px;
+  }
+
+  /* ─── INTRO ─── */
+  .intro {
+    padding: 48px 0 0;
+    animation: fadeUp 0.7s 0.2s ease both;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 700px;
+    line-height: 1.85;
+    margin: 0 auto;
+  }
+
+  .intro p strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ─── SERVICE CARDS ─── */
+  .services-grid {
+    display: grid;
+    gap: 2px;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+    transition: background 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card:first-child { border-radius: 8px 8px 0 0; }
+  .service-card:last-child { border-radius: 0 0 8px 8px; }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--red);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .service-card:hover {
+    background: var(--surface-2);
+    border-color: var(--border-light);
+  }
+
+  .service-card:hover::before { opacity: 1; }
+
+  .service-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    background: var(--red-dim);
+    border: 1px solid rgba(204,17,17,0.2);
+    padding: 2px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .service-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .service-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .service-includes li {
+    font-size: 14px;
+    color: var(--muted-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .service-includes li::before {
+    content: '—';
+    color: var(--red);
+    font-family: var(--mono);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .service-price-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding-top: 28px;
+  }
+
+  .service-price {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+  }
+
+  .service-price-note {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ─── TOTALS ─── */
+  .totals-wrap {
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-top: 2px;
+  }
+
+  .total-row:first-child { border-radius: 8px 8px 0 0; margin-top: 0; }
+  .total-row:last-child { border-radius: 0 0 8px 8px; }
+
+  .total-label {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+
+  .total-value {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .total-row.highlight {
+    background: linear-gradient(135deg, #1A1A1A 0%, #1e1111 100%);
+    border-color: rgba(204,17,17,0.3);
+  }
+
+  .total-row.highlight .total-label { color: var(--red); }
+  .total-row.highlight .total-value {
+    font-size: 32px;
+    color: var(--text);
+    letter-spacing: -1px;
+  }
+
+  /* ─── DIVIDER SECTION ─── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 32px;
+  }
+
+  .section-divider-line { flex: 1; height: 1px; background: var(--border); }
+
+  .section-divider-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ─── MONTHLY CARDS ─── */
+  .monthly-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    animation: fadeUp 0.7s 0.5s ease both;
+  }
+
+  .monthly-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .monthly-card:first-child { border-radius: 8px 0 0 0; }
+  .monthly-card:last-child { border-radius: 0 8px 0 0; }
+
+  .monthly-card:hover {
+    background: var(--surface-2);
+    border-color: var(--border-light);
+  }
+
+  .monthly-total {
+    grid-column: 1 / -1;
+    background: var(--surface);
+    border: 1px solid rgba(204,17,17,0.3);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeUp 0.7s 0.55s ease both;
+  }
+
+  .monthly-total-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .monthly-total-value {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -1px;
+  }
+
+  .monthly-card-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue-true);
+    background: rgba(58,143,212,0.1);
+    border: 1px solid rgba(58,143,212,0.2);
+    padding: 2px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .monthly-card-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.2px;
+    margin-bottom: 6px;
+  }
+
+  .monthly-card-note {
+    font-size: 14px;
+    color: var(--muted-2);
+    margin-bottom: 18px;
+  }
+
+  .monthly-card-price {
+    font-family: var(--mono);
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -1px;
+  }
+
+  .monthly-card-price sup {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--muted-2);
+    letter-spacing: 0;
+    vertical-align: super;
+  }
+
+  .monthly-card-price sub {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+
+  /* ─── PRAZO DE ENTREGA ─── */
+  .prazo-entrega {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 28px;
+    padding: 24px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: 6px;
+  }
+
+  .prazo-icon {
+    font-size: 32px;
+    color: var(--red);
+    flex-shrink: 0;
+    font-family: var(--mono);
+    opacity: 0.75;
+    line-height: 1;
+  }
+
+  .prazo-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .prazo-text {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .prazo-text strong { color: var(--text); font-weight: 600; }
+
+  /* ─── MAINTENANCE NOTE ─── */
+  .maintenance-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 2px;
+    padding: 18px 24px;
+    background: rgba(58,143,212,0.06);
+    border: 1px solid rgba(58,143,212,0.2);
+    border-radius: 0 0 8px 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .maintenance-note strong { color: var(--text); font-weight: 600; }
+
+  .maintenance-note-icon {
+    font-size: 12px;
+    color: var(--blue-true);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  /* ─── SUMMARY BOX ─── */
+  .summary-box {
+    margin-top: 48px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    animation: fadeUp 0.7s 0.6s ease both;
+  }
+
+  .summary-col h4 {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+
+  .summary-item:last-child { border-bottom: none; }
+
+  .summary-item-label { color: var(--text-secondary); }
+
+  .summary-item-value {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ─── CONDIÇÕES DE PAGAMENTO — TIMELINE ─── */
+  .payment-timeline {
+    margin-top: 8px;
+    animation: fadeUp 0.7s 0.65s ease both;
+  }
+
+  .timeline-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    padding-top: 8px;
+  }
+
+  .timeline-connector {
+    position: absolute;
+    top: 28px;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    height: 1px;
+    background: linear-gradient(to right, var(--red) 0%, rgba(204,17,17,0.45) 50%, rgba(204,17,17,0.15) 100%);
+    z-index: 0;
+  }
+
+  .timeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 20px 24px;
+  }
+
+  .timeline-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(204,17,17,0.22);
+  }
+
+  .timeline-node:nth-child(3) .timeline-dot {
+    border-color: rgba(204,17,17,0.55);
+    color: rgba(204,17,17,0.55);
+    box-shadow: 0 0 12px rgba(204,17,17,0.1);
+  }
+
+  .timeline-node:nth-child(4) .timeline-dot {
+    border-color: rgba(204,17,17,0.3);
+    color: rgba(204,17,17,0.3);
+    box-shadow: none;
+  }
+
+  .timeline-content { text-align: center; width: 100%; }
+
+  .timeline-pct {
+    font-family: var(--mono);
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .timeline-pct span {
+    font-size: 21px;
+    color: var(--red);
+    letter-spacing: 0;
+  }
+
+  .timeline-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--muted-2);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .timeline-when {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    background: var(--red-dim);
+    border: 1px solid rgba(204,17,17,0.25);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    animation: fadeUp 0.7s 0.7s ease both;
+  }
+
+  .cta-validity {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .cta-validity span { color: var(--red); }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--red);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    padding: 18px 48px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 8px 32px rgba(204,17,17,0.3);
+  }
+
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-btn:hover {
+    background: #e01212;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(204,17,17,0.45);
+  }
+
+  .cta-btn:active { transform: translateY(0); }
+
+  .cta-arrow {
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+
+  .cta-btn:hover .cta-arrow { transform: translateX(4px); }
+
+  .cta-sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .cta-sub strong { color: var(--text-secondary); font-weight: 600; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    margin-top: 80px;
+    border-top: 1px solid var(--border);
+    padding: 40px 0 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+    animation: fadeUp 0.7s 0.8s ease both;
+  }
+
+  .footer-brand {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .footer-contact-item .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 64px;
+  }
+
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .footer-doc-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    max-width: 280px;
+    line-height: 1.7;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── VALIDADE ─── */
+  .validity-bar {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .validity-bar-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  .validity-bar-text {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .validity-bar-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ─── ASSINATURA ─── */
+  .signature-section {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .signature-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .signature-line {
+    height: 1px;
+    background: var(--border-light);
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .signature-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .signature-name {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .signature-role {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ─── METODOLOGIA ─── */
+  .metodologia-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    animation: fadeUp 0.7s 0.66s ease both;
+  }
+
+  .metodologia-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 18px;
+    text-align: center;
+    position: relative;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .metodologia-step:first-child { border-radius: 8px 0 0 8px; }
+  .metodologia-step:last-child  { border-radius: 0 8px 8px 0; }
+
+  .metodologia-step:hover {
+    background: var(--surface-2);
+    border-color: var(--border-light);
+  }
+
+  .metodologia-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--red);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .metodologia-icon {
+    font-size: 22px;
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0.65;
+  }
+
+  .metodologia-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .metodologia-desc {
+    font-size: 12px;
+    color: var(--muted-2);
+    line-height: 1.6;
+  }
+
+  /* ─── PRÓXIMOS PASSOS ─── */
+  .proximos-passos {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    animation: fadeUp 0.7s 0.7s ease both;
+  }
+
+  .proximos-list {
+    list-style: none;
+  }
+
+  .proximos-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proximos-item:last-child { border-bottom: none; }
+
+  .proximos-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    background: var(--red-dim);
+    border: 1px solid rgba(204,17,17,0.2);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .proximos-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .proximos-desc {
+    font-size: 13px;
+    color: var(--muted-2);
+    line-height: 1.55;
+  }
+
+  /* ─── PRINT / PDF ─── */
+  @media print {
+    @page { size: A4; margin: 0; }
+
+    * { animation: none !important; transition: none !important; }
+
+    html, body {
+      background: #0D0D0D !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body::before { display: none; }
+
+    .page {
+      max-width: 100%;
+      margin: 0;
+      padding: 28px 52px 36px;
+      background: #0D0D0D;
+    }
+
+    .service-card,
+    .monthly-card,
+    .monthly-grid,
+    .monthly-total,
+    .totals-wrap,
+    .payment-timeline,
+    .prazo-entrega,
+    .metodologia-steps,
+    .proximos-passos,
+    .summary-box,
+    .signature-section,
+    footer {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+    }
+
+    .pdf-break {
+      break-before: page !important;
+      page-break-before: always !important;
+      padding-top: 28px !important;
+    }
+
+    header { padding: 12px 0; }
+    .brand-name { font-size: 17px; }
+    .brand-dot { width: 6px; height: 6px; }
+    .proposal-badge { font-size: 9px; padding: 3px 10px; }
+    .proposal-date { font-size: 10px; }
+
+    .hero { padding: 16px 0 12px; }
+    .hero svg { width: 54px !important; height: 54px !important; margin-bottom: 10px !important; }
+    .agency-hero-logo { font-size: 40px; letter-spacing: -2px; gap: 12px; margin-bottom: 6px; }
+    .brand-dot-hero { width: 11px; height: 11px; }
+    .hero-tagline { font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; }
+    .hero-for { margin-bottom: 8px; }
+    .hero-for-text { font-size: 9px; }
+    .client-hero-ref { font-size: 17px; }
+
+    .intro { padding: 12px 0 0; }
+    .intro p { font-size: 12px; line-height: 1.55; }
+
+    .section-divider { margin: 12px 0 8px !important; }
+    .section-divider-label { font-size: 9px; padding: 3px 10px; }
+
+    .service-includes { display: none !important; }
+    .services-grid { gap: 1px; }
+    .service-card { padding: 12px 20px; }
+    .service-card:first-child { border-radius: 7px 7px 0 0; }
+    .service-card:last-child  { border-radius: 0 0 7px 7px; }
+    .service-tag { font-size: 8px; padding: 1px 7px; margin-bottom: 4px; }
+    .service-name { font-size: 15px; margin-bottom: 3px; }
+    .service-desc { font-size: 12px; line-height: 1.45; margin-bottom: 0; }
+    .service-price-col { padding-top: 10px; gap: 2px; }
+    .service-price { font-size: 20px; }
+    .service-price-note { font-size: 10px; }
+
+    .totals-wrap { margin-top: 1px; }
+    .total-row { padding: 11px 20px; margin-top: 1px; }
+    .total-label { font-size: 11px; letter-spacing: 1.5px; }
+    .total-value { font-size: 14px; }
+    .total-row.highlight .total-value { font-size: 23px; }
+
+    .payment-timeline { margin-top: 24px; }
+    .timeline-dot { width: 38px; height: 38px; font-size: 13px; margin-bottom: 20px; }
+    .timeline-connector { top: calc(8px + 19px); }
+    .timeline-node { padding: 0 16px 18px; }
+    .timeline-pct { font-size: 44px; margin-bottom: 8px; }
+    .timeline-pct span { font-size: 21px; }
+    .timeline-title { font-size: 14px; margin-bottom: 7px; font-weight: 600; }
+    .timeline-desc { font-size: 12px; line-height: 1.6; margin-bottom: 12px; }
+    .timeline-when { font-size: 10px; padding: 4px 10px; letter-spacing: 1.5px; }
+
+    .prazo-entrega { margin-top: 28px; padding: 20px 26px; gap: 18px; }
+    .prazo-icon { font-size: 26px; }
+    .prazo-label { font-size: 10px; letter-spacing: 2.5px; margin-bottom: 6px; }
+    .prazo-text { font-size: 16px; }
+
+    .monthly-grid { gap: 2px; }
+    .monthly-card { padding: 20px 24px; }
+    .monthly-card-tag { font-size: 9px; margin-bottom: 7px; }
+    .monthly-card-name { font-size: 16px; margin-bottom: 4px; }
+    .monthly-card-note { font-size: 12px; margin-bottom: 12px; }
+    .monthly-card-price { font-size: 32px; }
+    .monthly-card-price sup { font-size: 15px; }
+    .monthly-card-price sub { font-size: 12px; }
+    .monthly-total { padding: 16px 24px; }
+    .monthly-total-label { font-size: 11px; }
+    .monthly-total-value { font-size: 26px; }
+
+    .maintenance-note { padding: 13px 18px; font-size: 13px; gap: 11px; }
+    .maintenance-note-icon { font-size: 11px; }
+
+    .summary-box { margin-top: 14px; padding: 20px 24px; gap: 22px; }
+    .summary-col h4 { font-size: 10px; margin-bottom: 11px; }
+    .summary-item { padding: 8px 0; font-size: 13px; }
+    .summary-item-value { font-size: 12px; }
+
+    .signature-section { margin-top: 24px; gap: 36px; }
+    .signature-block > div { height: 36px !important; }
+    .signature-label { font-size: 10px; }
+    .signature-name { font-size: 13px; }
+    .signature-role { font-size: 11px; }
+
+    footer { margin-top: 18px; padding: 14px 0 8px; }
+    .footer-brand { font-size: 15px; margin-bottom: 9px; }
+    .footer-contact-item { font-size: 12px; }
+    .footer-contact-item .label { font-size: 10px; min-width: 56px; }
+    .footer-doc-num { font-size: 10px; }
+    .footer-copy { font-size: 11px; }
+
+    .metodologia-steps { gap: 1px; }
+    .metodologia-step { padding: 12px 10px; }
+    .metodologia-step:hover { background: #1A1A1A; }
+    .metodologia-num { font-size: 9px; margin-bottom: 6px; }
+    .metodologia-icon { font-size: 16px; margin-bottom: 6px; }
+    .metodologia-title { font-size: 11px; margin-bottom: 4px; }
+    .metodologia-desc { font-size: 10px; line-height: 1.45; }
+
+    .proximos-passos { padding: 14px 20px; }
+    .proximos-item { padding: 9px 0; gap: 12px; }
+    .proximos-num { width: 24px; height: 24px; font-size: 9px; }
+    .proximos-title { font-size: 12px; margin-bottom: 2px; }
+    .proximos-desc { font-size: 10px; line-height: 1.45; }
+
+    .service-card:hover { background: #1A1A1A; }
+    .monthly-card:hover { background: #1A1A1A; }
+  }
+
+  @media (max-width: 640px) {
+    .service-card { grid-template-columns: 1fr; }
+    .service-price-col { align-items: flex-start; padding-top: 0; }
+    .monthly-grid { grid-template-columns: 1fr; }
+    .monthly-card:first-child { border-radius: 8px 8px 0 0; }
+    .monthly-card:last-child { border-radius: 0; }
+    .monthly-total { border-radius: 0 0 8px 8px; }
+    .summary-box { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .footer-right { align-items: flex-start; }
+    .client-name { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand-name">
+      <span class="brand-dot"></span>
+      <span>G<span class="brand-accent">Pinheiro</span> Hub</span>
+    </div>
+    <div class="header-right">
+      <span class="proposal-badge">Proposta Comercial</span>
+      <span class="proposal-date">26 / 05 / 2026</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100" height="100" style="margin-bottom:20px; filter: drop-shadow(0 8px 28px rgba(204,17,17,0.3));">
+      <rect width="200" height="200" rx="44" fill="#0d0d0d"/>
+      <rect x="3" y="3" width="194" height="194" rx="42" fill="none" stroke="#CC1111" stroke-width="3" opacity=".4"/>
+      <path d="M 58,44 L 20,100 L 58,156" fill="none" stroke="#CC1111" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 142,44 L 180,100 L 142,156" fill="none" stroke="#CC1111" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 117,81 A 26,26 0 1,0 117,119 L 117,104 L 92,104" fill="none" stroke="white" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="92" cy="104" r="5.5" fill="white"/>
+    </svg>
+    <p class="hero-tagline">Agência Digital</p>
+    <div class="hero-for">
+      <span class="hero-for-line"></span>
+      <span class="hero-for-text">Proposta para</span>
+      <span class="hero-for-line"></span>
+    </div>
+    <div class="client-hero-ref">Grupo True Empreendimentos</div>
+  </section>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>
+      Prezada equipe <strong>True Empreendimentos</strong>, apresentamos nossa proposta atualizada de soluções digitais
+      para o grupo. O escopo contempla a criação de <strong>3 sites</strong> — incluindo a landing page institucional
+      do holding e os sites das empresas coligadas — além de <strong>2 identidades visuais</strong> completas,
+      consolidando a presença digital do grupo com coerência e profissionalismo.
+    </p>
+  </div>
+
+  <!-- SERVIÇOS ÚNICOS -->
+  <div class="section-divider" style="margin-top: 56px; margin-bottom: 24px;">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Serviços — Investimento Único</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- SITE 01 — True Empreendimentos (Landing Page Holding) -->
+    <div class="service-card">
+      <div>
+        <span class="service-tag">Site 01</span>
+        <div class="service-name">Landing Page — True Empreendimentos</div>
+        <div class="service-desc">
+          Página principal do grupo <strong style="color:var(--text);">trueempreendimentos.com</strong> — apresenta o holding e serve como hub de navegação para as empresas coligadas (True Agropecuária e True Contemplada). Design institucional, responsivo e otimizado para SEO.
+        </div>
+        <ul class="service-includes">
+          <li>Design exclusivo e responsivo (mobile + desktop)</li>
+          <li>Hub de acesso com links e apresentação das empresas do grupo</li>
+          <li>Seções: Sobre o Grupo, Empresas, Diferenciais e Contato</li>
+          <li>Otimizado para aparecer no Google (SEO)</li>
+        </ul>
+      </div>
+      <div class="service-price-col">
+        <div class="service-price">R$ 1.500</div>
+        <div class="service-price-note">,00 / unidade</div>
+      </div>
+    </div>
+
+    <!-- SITE 02 — True Agropecuária -->
+    <div class="service-card">
+      <div>
+        <span class="service-tag">Site 02</span>
+        <div class="service-name">Site Institucional — True Agropecuária</div>
+        <div class="service-desc">
+          Site completo para a <strong style="color:var(--text);">True Agropecuária</strong>, apresentando os serviços, diferenciais e canais de contato da empresa. Identidade visual alinhada ao grupo, com foco no segmento agro.
+        </div>
+        <ul class="service-includes">
+          <li>Design exclusivo e responsivo com identidade do segmento agro</li>
+          <li>Seções: Sobre, Serviços, Diferenciais e Contato</li>
+          <li>Formulário de captação de leads integrado</li>
+          <li>Hospedagem configurada e domínio orientado</li>
+        </ul>
+      </div>
+      <div class="service-price-col">
+        <div class="service-price">R$ 1.500</div>
+        <div class="service-price-note">,00 / unidade</div>
+      </div>
+    </div>
+
+    <!-- SITE 03 — True Contemplada -->
+    <div class="service-card">
+      <div>
+        <span class="service-tag">Site 03</span>
+        <div class="service-name">Site Institucional — True Contemplada</div>
+        <div class="service-desc">
+          Site completo para a <strong style="color:var(--text);">True Contemplada</strong>, explicando o funcionamento dos consórcios, vantagens e captação de interessados. CMS simples para atualização autônoma de conteúdo.
+        </div>
+        <ul class="service-includes">
+          <li>Design exclusivo e responsivo com identidade da True Contemplada</li>
+          <li>Seções: Como funciona, Planos, Vantagens, FAQ e Contato</li>
+          <li>CMS simples para atualização de conteúdo pelo time</li>
+          <li>Hospedagem configurada e domínio orientado</li>
+        </ul>
+      </div>
+      <div class="service-price-col">
+        <div class="service-price">R$ 1.500</div>
+        <div class="service-price-note">,00 / unidade</div>
+      </div>
+    </div>
+
+    <!-- IDENTIDADE VISUAL 01 — True Empreendimentos -->
+    <div class="service-card">
+      <div>
+        <span class="service-tag">Branding 01</span>
+        <div class="service-name">Identidade Visual — True Empreendimentos</div>
+        <div class="service-desc">
+          Criação completa da identidade visual do <strong style="color:var(--text);">holding True Empreendimentos</strong>: logo, paleta, tipografia e guia de marca. Base visual que orientará toda a comunicação do grupo.
+        </div>
+        <ul class="service-includes">
+          <li>Logo em todas as versões (principal, horizontal, ícone, monocromático)</li>
+          <li>Paleta de cores primária e secundária com códigos HEX/RGB/CMYK</li>
+          <li>Tipografia definida (fontes para digital e impresso)</li>
+          <li>Brandguide em PDF + arquivos fonte (AI, SVG, PNG)</li>
+          <li>Aplicações: cartão de visita, papel timbrado e assinatura de e-mail</li>
+        </ul>
+      </div>
+      <div class="service-price-col">
+        <div class="service-price">R$ 750</div>
+        <div class="service-price-note">,00</div>
+      </div>
+    </div>
+
+    <!-- IDENTIDADE VISUAL 02 — True Contemplada -->
+    <div class="service-card">
+      <div>
+        <span class="service-tag">Branding 02</span>
+        <div class="service-name">Identidade Visual — True Contemplada</div>
+        <div class="service-desc">
+          Criação completa da identidade visual da <strong style="color:var(--text);">True Contemplada</strong>, alinhada ao universo do grupo porém com personalidade própria para o segmento de consórcios.
+        </div>
+        <ul class="service-includes">
+          <li>Logo em todas as versões (principal, horizontal, ícone, monocromático)</li>
+          <li>Paleta de cores própria, complementar à identidade do grupo</li>
+          <li>Tipografia definida (fontes para digital e impresso)</li>
+          <li>Brandguide em PDF + arquivos fonte (AI, SVG, PNG)</li>
+          <li>Aplicações: cartão de visita, papel timbrado e assinatura de e-mail</li>
+        </ul>
+      </div>
+      <div class="service-price-col">
+        <div class="service-price">R$ 750</div>
+        <div class="service-price-note">,00</div>
+      </div>
+    </div>
+
+    <!-- AGENTES DE IA — Opcional -->
+    <div class="service-card" style="border-color: rgba(204,17,17,0.18); border-style: dashed;">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span class="service-tag" style="margin-bottom:0;">IA</span>
+          <span class="service-tag" style="margin-bottom:0; color:#f0a500; background:rgba(240,165,0,0.1); border-color:rgba(240,165,0,0.25);">Opcional</span>
+        </div>
+        <div class="service-name">Agentes de IA — Automação Inteligente</div>
+        <div class="service-desc">
+          Implementação de agentes de inteligência artificial para automatizar atendimentos, qualificar leads e executar tarefas repetitivas — funcionando 24h para as empresas do grupo.
+        </div>
+        <ul class="service-includes">
+          <li>Agente de atendimento via WhatsApp Business (qualificação de leads)</li>
+          <li>Respostas automáticas baseadas em IA generativa (LLM)</li>
+          <li>Fluxo personalizado por empresa (Contemplada, Agropecuária ou Empreendimentos)</li>
+          <li>Automação de tarefas internas: agendamentos, envio de materiais, follow-up</li>
+          <li>Painel de monitoramento de conversas e métricas de performance</li>
+        </ul>
+      </div>
+      <div class="service-price-col">
+        <div class="service-price">R$ 1.500</div>
+        <div class="service-price-note">,00</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUBTOTAIS -->
+  <div class="totals-wrap">
+    <div class="total-row" style="border-radius: 0; margin-top: 2px;">
+      <span class="total-label">Subtotal sem Agentes de IA</span>
+      <span class="total-value">R$ 6.000,00</span>
+    </div>
+    <div class="total-row highlight" style="border-radius: 0 0 8px 8px; margin-top: 2px;">
+      <span class="total-label">Subtotal com Agentes de IA <span style="font-size:10px; opacity:0.7;">(opcional incluído)</span></span>
+      <span class="total-value">R$ 7.500,00</span>
+    </div>
+  </div>
+
+  <!-- CONDIÇÕES DE PAGAMENTO — INÍCIO PÁGINA 2 -->
+  <div class="section-divider pdf-break">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Condições de Pagamento</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="payment-timeline">
+    <div class="timeline-track">
+      <div class="timeline-connector"></div>
+
+      <div class="timeline-node">
+        <div class="timeline-dot">01</div>
+        <div class="timeline-content">
+          <div class="timeline-pct">40<span>%</span></div>
+          <div class="timeline-title">Entrada</div>
+          <div class="timeline-desc">Pagamento inicial confirmando o início do projeto e reservando a agenda da equipe.</div>
+          <span class="timeline-when">10 / 08 / 2026</span>
+        </div>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-dot">02</div>
+        <div class="timeline-content">
+          <div class="timeline-pct">30<span>%</span></div>
+          <div class="timeline-title">Apresentação do Trabalho</div>
+          <div class="timeline-desc">Pago na apresentação para revisão, aprovação ou solicitação de correções.</div>
+          <span class="timeline-when">10 / 09 / 2026</span>
+        </div>
+      </div>
+
+      <div class="timeline-node">
+        <div class="timeline-dot">03</div>
+        <div class="timeline-content">
+          <div class="timeline-pct">30<span>%</span></div>
+          <div class="timeline-title">Conclusão e Entrega</div>
+          <div class="timeline-desc">Pagamento final encerrando o ciclo com a entrega completa de todos os materiais.</div>
+          <span class="timeline-when">10 / 10 / 2026 — Quitação</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRAZO DE ENTREGA -->
+  <div class="prazo-entrega">
+    <div class="prazo-icon">◷</div>
+    <div>
+      <div class="prazo-label">Prazo de Entrega</div>
+      <div class="prazo-text">
+        O projeto completo será entregue em <strong>até 45 dias</strong> a partir da data de assinatura do contrato,
+        seguindo as etapas definidas acima. O prazo contempla os 3 sites e as 2 identidades visuais de forma simultânea.
+      </div>
+    </div>
+  </div>
+
+  <!-- METODOLOGIA DE TRABALHO -->
+  <div class="section-divider" style="margin-top: 40px; margin-bottom: 24px;">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Metodologia de Trabalho</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="metodologia-steps">
+    <div class="metodologia-step">
+      <span class="metodologia-num">01</span>
+      <span class="metodologia-icon">◎</span>
+      <div class="metodologia-title">Briefing</div>
+      <div class="metodologia-desc">Alinhamento de objetivos, público-alvo e referências visuais de cada empresa do grupo.</div>
+    </div>
+    <div class="metodologia-step">
+      <span class="metodologia-num">02</span>
+      <span class="metodologia-icon">✦</span>
+      <div class="metodologia-title">Criação</div>
+      <div class="metodologia-desc">Design das identidades visuais e arquitetura de conteúdo dos 3 sites desenvolvidos em paralelo.</div>
+    </div>
+    <div class="metodologia-step">
+      <span class="metodologia-num">03</span>
+      <span class="metodologia-icon">⌗</span>
+      <div class="metodologia-title">Desenvolvimento</div>
+      <div class="metodologia-desc">Construção técnica dos sites, configuração de domínios e, se aplicável, dos agentes de IA.</div>
+    </div>
+    <div class="metodologia-step">
+      <span class="metodologia-num">04</span>
+      <span class="metodologia-icon">◷</span>
+      <div class="metodologia-title">Entrega</div>
+      <div class="metodologia-desc">Revisão final, publicação de todos os sites e treinamento com suporte nos primeiros dias.</div>
+    </div>
+  </div>
+
+  <!-- PRÓXIMOS PASSOS -->
+  <div class="section-divider" style="margin-top: 36px; margin-bottom: 24px;">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Próximos Passos</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="proximos-passos">
+    <ul class="proximos-list">
+      <li class="proximos-item">
+        <span class="proximos-num">01</span>
+        <div>
+          <div class="proximos-title">Aprovação desta Proposta</div>
+          <div class="proximos-desc">Confirme a contratação assinando este documento e efetuando o pagamento de entrada (40%).</div>
+        </div>
+      </li>
+      <li class="proximos-item">
+        <span class="proximos-num">02</span>
+        <div>
+          <div class="proximos-title">Envio do Briefing</div>
+          <div class="proximos-desc">Você receberá um formulário com perguntas sobre cada empresa do grupo — marca, público-alvo, preferências visuais e referências — para orientar a criação.</div>
+        </div>
+      </li>
+      <li class="proximos-item">
+        <span class="proximos-num">03</span>
+        <div>
+          <div class="proximos-title">Kickoff do Projeto</div>
+          <div class="proximos-desc">Reunião de alinhamento com a equipe para definir o cronograma detalhado, prioridades de entrega e o canal de comunicação do projeto.</div>
+        </div>
+      </li>
+      <li class="proximos-item">
+        <span class="proximos-num">04</span>
+        <div>
+          <div class="proximos-title">Início da Produção</div>
+          <div class="proximos-desc">Nossa equipe começa imediatamente — em 15 dias você recebe a primeira apresentação das identidades visuais e wireframes dos sites para aprovação e ajustes.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SERVIÇOS RECORRENTES — INÍCIO PÁGINA 3 -->
+  <div class="section-divider pdf-break">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Serviços Recorrentes — Mensal</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="monthly-grid">
+
+    <div class="monthly-card">
+      <span class="monthly-card-tag">Manutenção</span>
+      <div class="monthly-card-name">Manutenção dos Sites</div>
+      <div class="monthly-card-note">3 sites × R$ 250,00 — conteúdo, segurança e funcionamento contínuo</div>
+      <div class="monthly-card-price">
+        <sup>R$</sup> 750<sub>/mês</sub>
+      </div>
+    </div>
+
+    <div class="monthly-card" style="border-color: rgba(240,165,0,0.2);">
+      <span class="monthly-card-tag" style="color:#f0a500; background:rgba(240,165,0,0.1); border-color:rgba(240,165,0,0.25);">Opcional</span>
+      <div class="monthly-card-name">Manutenção Agentes de IA</div>
+      <div class="monthly-card-note">Monitoramento, ajustes de fluxo e suporte técnico mensal dos agentes</div>
+      <div class="monthly-card-price">
+        <sup>R$</sup> 250<sub>/mês</sub>
+      </div>
+    </div>
+
+    <div class="monthly-total">
+      <span class="monthly-total-label">Total Mensal (sem IA) &nbsp;/&nbsp; <span style="color:rgba(240,165,0,0.8);">com IA (opcional)</span></span>
+      <span class="monthly-total-value">R$ 750 <span style="font-size:14px; color: var(--muted); letter-spacing: 0;">/mês</span> &nbsp;<span style="font-size:16px; color:rgba(240,165,0,0.7);">ou R$ 1.000</span></span>
+    </div>
+
+  </div>
+
+  <div class="maintenance-note" style="border-radius: 0; border-bottom: none;">
+    <div class="maintenance-note-icon">✦</div>
+    <div>
+      <strong>4 meses de manutenção inclusos</strong> — Os primeiros 4 meses de manutenção dos sites são cortesia da GPinheiro Hub.
+      A cobrança mensal de <strong>R$ 750,00</strong> passa a ser aplicada somente a partir do <strong>5º mês</strong>.
+    </div>
+  </div>
+
+  <div style="margin-top: 2px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 8px 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+    <div>
+      <div style="font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 10px;">✓ &nbsp;Incluso na manutenção</div>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 7px;">
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #4caf50; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Alteração de textos, fotos e informações existentes</li>
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #4caf50; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Adição de novos conteúdos e seções simples</li>
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #4caf50; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Monitoramento de funcionamento e disponibilidade online</li>
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #4caf50; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Atualizações de segurança e correção de erros</li>
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #4caf50; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Suporte técnico mensal (até 2h incluídas)</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #f0a500; margin-bottom: 10px;">+ &nbsp;Valor adicional (sob consulta)</div>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 7px;">
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #f0a500; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Novas funcionalidades ou módulos avançados</li>
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #f0a500; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Integrações avançadas com sistemas externos (CRM, ERP, APIs)</li>
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #f0a500; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Redesign ou reestruturação de páginas</li>
+        <li style="font-size: 13px; color: var(--muted-2); display: flex; align-items: flex-start; gap: 8px;"><span style="color: #f0a500; font-size: 11px; margin-top: 2px; flex-shrink:0;">●</span> Criação de landing pages ou sites adicionais</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- RESUMO FINANCEIRO -->
+  <div class="summary-box">
+    <div class="summary-col">
+      <h4>Investimento Inicial</h4>
+      <div class="summary-item">
+        <span class="summary-item-label">Landing Page True Empreendimentos</span>
+        <span class="summary-item-value">R$ 1.500,00</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Site True Agropecuária</span>
+        <span class="summary-item-value">R$ 1.500,00</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Site True Contemplada</span>
+        <span class="summary-item-value">R$ 1.500,00</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Identidade Visual True Empreendimentos</span>
+        <span class="summary-item-value">R$ 750,00</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Identidade Visual True Contemplada</span>
+        <span class="summary-item-value">R$ 750,00</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Agentes de IA <span style="font-size:11px; color:#f0a500;">(opcional)</span></span>
+        <span class="summary-item-value">R$ 1.500,00</span>
+      </div>
+      <div class="summary-item" style="padding-top: 14px; margin-top: 4px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border);">
+        <span class="summary-item-label" style="color: var(--text-secondary);">Sem Agentes de IA</span>
+        <span class="summary-item-value">R$ 6.000,00</span>
+      </div>
+      <div class="summary-item" style="border-bottom: none;">
+        <span class="summary-item-label" style="color: var(--text); font-weight: 600;">Com Agentes de IA</span>
+        <span class="summary-item-value" style="font-size: 16px; color: var(--red);">R$ 7.500,00</span>
+      </div>
+    </div>
+    <div class="summary-col">
+      <h4>Recorrência Mensal</h4>
+      <div class="summary-item">
+        <span class="summary-item-label">Manutenção 3 Sites</span>
+        <span class="summary-item-value">R$ 750,00/mês</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-item-label">Manutenção Agentes de IA <span style="font-size:11px; color:#f0a500;">(opcional)</span></span>
+        <span class="summary-item-value">R$ 250,00/mês</span>
+      </div>
+      <div class="summary-item" style="border-bottom: none; padding-top: 14px; margin-top: 4px; border-top: 1px solid var(--border-light);">
+        <span class="summary-item-label" style="color: var(--text); font-weight: 600;">Total/mês (sem IA)</span>
+        <span class="summary-item-value" style="font-size: 16px; color: var(--red);">R$ 750,00/mês</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASSINATURA -->
+  <div class="signature-section">
+    <div class="signature-block">
+      <div style="height: 48px;"></div>
+      <div class="signature-line"></div>
+      <span class="signature-label">Contratante</span>
+      <span class="signature-name">True Empreendimentos</span>
+      <span class="signature-role">Representante Legal / Data: ___/___/______</span>
+    </div>
+    <div class="signature-block">
+      <div style="height: 48px;"></div>
+      <div class="signature-line"></div>
+      <span class="signature-label">Contratada</span>
+      <span class="signature-name">Gabriel Pinheiro — GPinheiro Hub</span>
+      <span class="signature-role">Prestador de Serviços / Data: ___/___/______</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">
+        <span class="brand-dot" style="width:6px;height:6px;"></span>
+        G<span style="color:var(--red);">Pinheiro</span> Hub
+      </div>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <span class="label">E-mail</span>
+          <span>Contact@gpinheirohub.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="label">WhatsApp</span>
+          <span>(61) 9509-5098</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="label">Instagram</span>
+          <span>@gpinheirohub</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-right">
+      <span class="footer-doc-num">DOC #TRUE-2605-002</span>
+      <p class="footer-copy">
+        Esta proposta é confidencial e destinada exclusivamente ao Grupo True Empreendimentos.
+        Valores sujeitos a alteração após o prazo de validade.
+      </p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
